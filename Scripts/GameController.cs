@@ -177,7 +177,9 @@ public class GameController : MonoBehaviour {
         foreach (GameObject enemy in enemies)
         {
             EnemyAttack enemyattack = enemy.GetComponent<EnemyAttack>();
-            enemyattack.canAttackPlayer = true;
+			if (enemyattack != null) {
+				enemyattack.canAttackPlayer = true;
+			}
         }
     }
 

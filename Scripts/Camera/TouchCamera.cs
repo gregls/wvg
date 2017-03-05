@@ -24,7 +24,7 @@ public class TouchCamera : MonoBehaviour {
 				Vector2 newTouchPosition = Input.GetTouch(0).position;
 
 				if (Input.GetTouch (0).phase == TouchPhase.Moved) {
-					//transform.position += transform.TransformDirection ((Vector3)((oldTouchPositions [0] - newTouchPosition) * GetComponent<Camera> ().orthographicSize / GetComponent<Camera> ().pixelHeight * 2f));
+					transform.position += transform.TransformDirection ((Vector3)((oldTouchPositions [0] - newTouchPosition) * GetComponent<Camera> ().orthographicSize / GetComponent<Camera> ().pixelHeight * 2f));
 				}
 				
 				oldTouchPositions[0] = newTouchPosition;
