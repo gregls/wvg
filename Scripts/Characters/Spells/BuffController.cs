@@ -33,9 +33,11 @@ public class BuffController : StateMachineBehaviour {
     void CreateBuff()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        PlayerAttack playerAttack = player.GetComponent<PlayerAttack>();
+		PlayerAttack playerAttack = player.GetComponent<PlayerAttack>();
+		PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
         GameObject spell = (GameObject)Instantiate(playerAttack.getSpellToCast(), player.transform.position, new Quaternion(-90f, 0, 0, 0));
         playerAttack.AddSpell(spell);
+		playerHealth.setArmorEffect (spell);
     }
 
     void OnStateEnter()

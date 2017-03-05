@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour {
 
 	Animator animator;
 	bool isDead = false;
+	GameObject armorEffect;
 
 	void Start() {
 		currentHealth = maxHealth;
@@ -19,7 +20,14 @@ public class PlayerHealth : MonoBehaviour {
 	}
 
 	public void takeDamage(int amount){
-		currentHealth = currentHealth - amount;
+		if (armor > 0) {
+			armor = armor - amount;
+			if (armor == 0) {
+				Destroy (armorEffect);
+			}
+		} else {
+			currentHealth = currentHealth - amount;
+		}
 
 		if (currentHealth <= 0 && !isDead) {
 			isDead = true;
@@ -44,4 +52,9 @@ public class PlayerHealth : MonoBehaviour {
     {
         return !isDead;
     }
+
+	public void setArmorEffect(GameObject spell)
+	{
+		armorEffect = spell;
+	}
 }
